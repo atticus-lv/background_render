@@ -1,0 +1,15 @@
+{
+  "Render current file in background": "在后台渲染当前文件",
+  "Use Scene Frame Range": "使用场景帧范围",
+  "Use Scene Filepath": "使用场景文件路径",
+  "Ctrl click to set options for background render": "Ctrl+单击设置后台渲染选项",
+  "Generate Batch File (.bat)": "生成批处理文件",
+  "Generate Log File": "生成日志",
+  "Custom Scene": "自定义场景",
+  "Custom Camera": "自定义相机",
+  "Custom Resolution": "自定义分辨率",
+  "Custom Frame Range": "自定义帧范围",
+  "Custom File Path": "自定义文件路径",
+  "Open Directory": "打开目录",
+  "Background Render": "后台渲染"
+}
