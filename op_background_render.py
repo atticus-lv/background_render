@@ -147,11 +147,7 @@ class WM_OT_background_render(bpy.types.Operator):
 def draw_render_properties(self, context):
     layout = self.layout
 
-    box = layout.box()
-    box.use_property_split = True
-
-    box.label(text='Background Render')
-    row = box.row()
+    row = layout.row()
     row.scale_y = 1.2
     row.operator("wm.background_render", icon='RENDER_STILL', text='Render Image').operator_type = 'STILL'
     row.operator("wm.background_render", icon='RENDER_ANIMATION', text='Render Animation').operator_type = 'ANIM'
