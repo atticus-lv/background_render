@@ -14,7 +14,7 @@
 
 **Install**
 
-Edit > Preferences > Add-on > Intall
+Edit > Preferences > Add-on > Install
 
 **Usage**
 
