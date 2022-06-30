@@ -10,10 +10,10 @@ def get_cmd(self, context):
 
     cmd = [
         'start',
-        blender_path,
+        '"{}"'.format(blender_path),
         '--factory-startup',
         '-b',
-        filepath
+        '"{}"'.format(filepath),
     ]
 
     # set output path
