@@ -8,7 +8,9 @@
 
 [[Github-master](https://github.com/atticus-lv/background_render/archive/refs/heads/master.zip)](https://github.com/atticus-lv/background_render/archive/refs/heads/master.zip)
 
-
+### log
+v0.2
++ fix: path with space will not work
 
 ## Intro
 

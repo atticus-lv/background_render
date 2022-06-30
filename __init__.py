@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Background Render",
     "author": "Atticus",
-    "version": (0, 1),
+    "version": (0, 2),
     "blender": (2, 83, 0),
     "location": "Properties > Render Properties",
     "description": "Render File in background",
