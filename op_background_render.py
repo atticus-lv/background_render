@@ -10,10 +10,10 @@ def get_cmd(self, context):
 
     cmd = [
         'start',
-        f'"{blender_path}"',
+        blender_path,
         '--factory-startup',
         '-b',
-        f'"{filepath}"'
+        filepath
     ]
 
     # set output path
@@ -22,7 +22,7 @@ def get_cmd(self, context):
 
     if self.operator_type == 'STILL':
         cmd.append('-f')
-        cmd.append(f'{self.frame}')
+        cmd.append(f'{self.frame_current}')
 
     elif self.operator_type == 'ANIM':
         if not self.use_scene_frame_range:
@@ -43,7 +43,7 @@ def generate_file(self, context):
     name = os.path.basename(bpy.data.filepath[:-6])
     dir = os.path.dirname(bpy.data.filepath)
 
-    frame = self.frame if self.operator_type == 'STILL' else str(
+    frame = self.frame_current if self.operator_type == 'STILL' else str(
         self.frame_start) + '-' + str(self.frame_end)
 
     path = os.path.join(dir,
@@ -69,8 +69,8 @@ class WM_OT_background_render(bpy.types.Operator):
         ('ANIM', 'Animation', 'Render Animation', 'RENDER_ANIMATION', 1),
     ], default='STILL')
 
-    use_scene_frame: BoolProperty(name='Use Scene Frame', default=True)
-    frame: IntProperty(name='Frame', default=1)
+    use_current_frame: BoolProperty(name='Use Current Frame', default=True)
+    frame_current: IntProperty(name='Frame', default=1)
 
     use_scene_frame_range: BoolProperty(name='Use Scene Frame Range', default=True)
     frame_start: IntProperty(name='Start Frame', default=1)
@@ -94,9 +94,9 @@ class WM_OT_background_render(bpy.types.Operator):
 
         if self.operator_type == 'STILL':
             col = layout.column(align=True)
-            col.prop(self, "use_scene_frame")
-            if not self.use_scene_frame:
-                col.prop(self, "frame")
+            col.prop(self, "use_current_frame")
+            if not self.use_current_frame:
+                col.prop(self, "frame_current")
         elif self.operator_type == 'ANIM':
             col = layout.column(align=True)
             col.prop(self, "use_scene_frame_range")
@@ -119,7 +119,7 @@ class WM_OT_background_render(bpy.types.Operator):
             self.report({'ERROR'}, "Save the current Blender file")
             return {'FINISHED'}
         # insert current setting to clean flow code
-        self.frame = context.scene.frame_current
+        self.frame_current = context.scene.frame_current
         self.frame_start = context.scene.frame_start
         self.frame_end = context.scene.frame_end
         self.filepath = context.scene.render.filepath
