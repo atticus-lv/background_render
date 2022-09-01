@@ -7,6 +7,7 @@ def get_cmd(self, context):
     blender_path = bpy.app.binary_path.replace("\\", "/")
     filepath = bpy.data.filepath.replace("\\", "/")
     output_path = bpy.path.abspath(self.filepath)
+    device = context.preferences.addons["cycles"].preferences.compute_device_type
 
     cmd = [
         'start',
@@ -22,7 +23,7 @@ def get_cmd(self, context):
 
     if self.operator_type == 'STILL':
         cmd.append('-f')
-        cmd.append(f'{self.frame_current}')
+        cmd.append(f'{self.frame}')
 
     elif self.operator_type == 'ANIM':
         if not self.use_scene_frame_range:
@@ -30,6 +31,8 @@ def get_cmd(self, context):
             cmd.append(f'--frame-end {self.frame_end}')
 
         cmd.append('-a')
+
+    cmd.append(f'-- --cycles-device {device}')
 
     return ' '.join(cmd)
 
