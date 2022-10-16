@@ -16,7 +16,7 @@ v0.2
 
 **Install**
 
-Edit > Preferences > Add-on > Intall
+Edit > Preferences > Add-on > Install
 
 **Usage**
 
